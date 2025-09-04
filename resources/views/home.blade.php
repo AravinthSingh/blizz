@@ -6,7 +6,7 @@
 <!-- Hero Slider -->
 <section class="relative h-screen overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-r from-primary-600 to-secondary-600 opacity-90"></div>
-    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/hero_image_1.jpg')"></div>
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://picsum.photos/1200/600?random=1')"></div>
     
     <div class="relative z-10 flex items-center justify-center h-full">
         <div class="text-center text-white px-4" data-aos="fade-up">
@@ -35,7 +35,7 @@
                             <img src="{{ asset('storage/' . $product->images[0]) }}" alt="{{ $product->name }}" class="w-full h-48 object-cover">
                         @else
                             <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
-                                <img src="/images/product_placeholder_{{ $loop->iteration }}.jpg" alt="{{ $product->name }}" class="w-full h-full object-cover">
+                                <img src="https://picsum.photos/400/300?random={{ $loop->iteration }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
                             </div>
                         @endif
                         
@@ -106,7 +106,7 @@
                             <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}" class="w-16 h-16 mx-auto mb-4 rounded-full object-cover">
                         @else
                             <div class="w-16 h-16 mx-auto mb-4 bg-primary-200 rounded-full flex items-center justify-center">
-                                <img src="/images/category_icon_{{ $loop->iteration }}.jpg" alt="{{ $category->name }}" class="w-12 h-12 rounded-full object-cover">
+                                <img src="https://picsum.photos/100/100?random={{ $loop->iteration + 10 }}" alt="{{ $category->name }}" class="w-12 h-12 rounded-full object-cover">
                             </div>
                         @endif
                         <h3 class="text-lg font-semibold text-gray-900 group-hover:text-primary-600 transition duration-300">{{ $category->name }}</h3>
@@ -133,7 +133,7 @@
                             <img src="{{ asset('storage/' . $testimonial->customer_image) }}" alt="{{ $testimonial->customer_name }}" class="w-12 h-12 rounded-full object-cover mr-4">
                         @else
                             <div class="w-12 h-12 rounded-full bg-primary-200 flex items-center justify-center mr-4">
-                                <img src="/images/customer_avatar_{{ $loop->iteration }}.jpg" alt="{{ $testimonial->customer_name }}" class="w-10 h-10 rounded-full object-cover">
+                                <img src="https://picsum.photos/80/80?random={{ $loop->iteration + 20 }}" alt="{{ $testimonial->customer_name }}" class="w-10 h-10 rounded-full object-cover">
                             </div>
                         @endif
                         <div>
