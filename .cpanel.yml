@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/revlhiro/public_html/blizz/
+    - export DEPLOYPATH=/home/revlhiro/repo/blizz/
     - /bin/cp -R * $DEPLOYPATH
     - cd $DEPLOYPATH
     - composer install --optimize-autoloader --no-dev
