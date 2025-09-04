@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blizz Image Placeholder Generator</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .placeholder { margin: 10px; display: inline-block; }
+        canvas { border: 1px solid #ccc; margin: 5px; }
+        button { background: #6366f1; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Blizz Placeholder Image Generator</h1>
+    <button onclick="generateAllImages()">Generate All Placeholder Images</button>
+    <div id="images"></div>
+
+    <script>
+        function createPlaceholder(width, height, text, filename, bgColor = '#e5e7eb', textColor = '#374151') {
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            
+            // Background
+            ctx.fillStyle = bgColor;
+            ctx.fillRect(0, 0, width, height);
+            
+            // Text
+            ctx.fillStyle = textColor;
+            ctx.font = `${Math.min(width, height) / 8}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(text, width/2, height/2);
+            
+            // Create download link
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/jpeg', 0.8);
+            link.textContent = `Download ${filename}`;
+            link.style.display = 'block';
+            link.style.margin = '5px';
+            
+            const div = document.createElement('div');
+            div.className = 'placeholder';
+            div.appendChild(canvas);
+            div.appendChild(link);
+            
+            return div;
+        }
+
+        function generateAllImages() {
+            const container = document.getElementById('images');
+            container.innerHTML = '';
+            
+            // Hero image
+            container.appendChild(createPlaceholder(1200, 600, 'BLIZZ\nFACE CREAM', 'hero_image_1.jpg', '#8b5cf6', 'white'));
+            
+            // Product placeholders
+            for(let i = 1; i <= 10; i++) {
+                container.appendChild(createPlaceholder(400, 300, `PRODUCT\n${i}`, `product_placeholder_${i}.jpg`, '#f3f4f6', '#6b7280'));
+            }
+            
+            // Category icons
+            const categories = ['Anti-Aging', 'Moisturizers', 'Night Creams', 'Day Creams', 'Sensitive', 'Acne Care'];
+            for(let i = 1; i <= 6; i++) {
+                container.appendChild(createPlaceholder(200, 200, categories[i-1], `category_icon_${i}.jpg`, '#ddd6fe', '#5b21b6'));
+            }
+            
+            // Customer avatars
+            for(let i = 1; i <= 3; i++) {
+                container.appendChild(createPlaceholder(150, 150, `USER\n${i}`, `customer_avatar_${i}.jpg`, '#fce7f3', '#be185d'));
+            }
+        }
+    </script>
+</body>
+</html>
