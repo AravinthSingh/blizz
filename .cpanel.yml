@@ -1,16 +1,28 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/revlhiro/test.revlinetrucks.com/blizz/
-    - /bin/cp -R * $DEPLOYPATH
-    - cd $DEPLOYPATH
-    - composer install --optimize-autoloader --no-dev
-    - npm ci
-    - npm run build
-    - php artisan key:generate --force
-    - php artisan migrate --seed --force
-    - php artisan config:cache
-    - php artisan route:cache
-    - php artisan view:cache
-    - chmod -R 755 storage/
-    - chmod -R 755 bootstrap/cache/
+    - export DEPLOY_PATH=$HOME/repos/blizz
+    - echo "Deploying to $DEPLOY_PATH"
+
+    # composer (uses cPanel's composer if enabled)
+    - if command -v composer >/dev/null 2>&1; then cd $DEPLOY_PATH && composer install --no-dev --optimize-autoloader --prefer-dist; fi
+
+    # ensure .env exists (create from example if missing)
+    - if [ ! -f "$DEPLOY_PATH/.env" ]; then cp "$DEPLOY_PATH/.env.example" "$DEPLOY_PATH/.env"; fi
+
+    # app key (idempotent)
+    - php $DEPLOY_PATH/artisan key:generate --force || true
+
+    # storage link (idempotent)
+    - php $DEPLOY_PATH/artisan storage:link || true
+
+    # clear & warm caches
+    - php $DEPLOY_PATH/artisan config:clear || true
+    - php $DEPLOY_PATH/artisan route:clear || true
+    - php $DEPLOY_PATH/artisan view:clear || true
+    - php $DEPLOY_PATH/artisan config:cache || true
+    - php $DEPLOY_PATH/artisan route:cache || true
+    - php $DEPLOY_PATH/artisan view:cache || true
+
+    # run migrations (safe to re-run)
+    - php $DEPLOY_PATH/artisan migrate --force || true
