@@ -10,7 +10,7 @@
     
     <div class="relative z-10 flex items-center justify-center h-full">
         <div class="text-center text-white px-4" data-aos="fade-up">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6">Radiant Skin</h1>
+            <h1 class="">Radiant Skin</h1>
             <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Discover the secret to glowing, healthy skin with our premium face cream collection</p>
             <a href="{{ route('products') }}" class="bg-white text-primary-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300">
                 Shop Now
