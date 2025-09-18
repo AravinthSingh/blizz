@@ -53,4 +53,19 @@ class AdminController extends Controller
             'topProducts'
         ));
     }
+
+    public function stockCheck()
+    {
+        $products = Product::with('category')->get();
+        $categories = Category::all();
+        $lowStockProducts = Product::where('quantity', '<=', 5)->where('quantity', '>', 0)->get();
+        $outOfStockProducts = Product::where('quantity', 0)->get();
+
+        return view('admin.stock-check', compact(
+            'products',
+            'categories', 
+            'lowStockProducts',
+            'outOfStockProducts'
+        ));
+    }
 }

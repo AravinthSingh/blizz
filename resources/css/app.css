@@ -4,3 +4,484 @@
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
+
+/* Ayurvedic Theme - Custom Styles and Animations */
+:root {
+  --primary-gradient: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+  --secondary-gradient: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+  --earth-gradient: linear-gradient(135deg, #8a6a42 0%, #b8935a 100%);
+  --nature-gradient: linear-gradient(135deg, #052e16 0%, #15803d 50%, #d97706 100%);
+  --glass-bg: rgba(34, 197, 94, 0.1);
+  --glass-border: rgba(34, 197, 94, 0.2);
+  --shadow-natural: 0 20px 40px rgba(21, 128, 61, 0.15), 0 10px 20px rgba(21, 128, 61, 0.1);
+  --shadow-natural-hover: 0 30px 60px rgba(21, 128, 61, 0.25), 0 15px 30px rgba(21, 128, 61, 0.15);
+}
+
+/* Global 3D Effects */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  overflow-x: hidden;
+  cursor: none;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Custom Cursor */
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: var(--primary-gradient);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease;
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+}
+
+.custom-cursor.hover {
+  transform: scale(1.5);
+  background: var(--secondary-gradient);
+  box-shadow: 0 0 30px rgba(217, 119, 6, 0.7);
+}
+
+/* Cursor Trail */
+.cursor-trail {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: rgba(34, 197, 94, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* Mouse Follow Effect */
+.mouse-follower {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(34, 197, 94, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9997;
+  transition: transform 0.2s ease;
+}
+
+/* Ayurvedic Glassmorphism Effect */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-natural);
+}
+
+/* Natural 3D Card Effects */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: var(--shadow-natural);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, rgba(240, 253, 244, 0.9) 0%, rgba(220, 252, 231, 0.8) 100%);
+}
+
+.card-3d::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(217, 119, 6, 0.05) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card-3d:hover {
+  transform: translateY(-15px) rotateX(5deg) rotateY(5deg);
+  box-shadow: var(--shadow-natural-hover);
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Ayurvedic Gradient Text */
+.gradient-text {
+  background: var(--nature-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+/* Natural 3D Button */
+.btn-3d {
+  position: relative;
+  background: var(--primary-gradient);
+  border: none;
+  border-radius: 50px;
+  padding: 15px 30px;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(22, 163, 74, 0.3);
+  overflow: hidden;
+  cursor: none;
+}
+
+.btn-3d::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.btn-3d:hover::before {
+  left: 100%;
+}
+
+.btn-3d:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(22, 163, 74, 0.4);
+  background: var(--secondary-gradient);
+}
+
+.btn-3d:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(22, 163, 74, 0.3);
+}
+
+/* Ayurvedic Button Variant */
+.btn-ayurveda {
+  position: relative;
+  background: var(--earth-gradient);
+  border: 2px solid rgba(184, 147, 90, 0.3);
+  border-radius: 50px;
+  padding: 15px 30px;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(138, 106, 66, 0.3);
+  overflow: hidden;
+  cursor: none;
+}
+
+.btn-ayurveda:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(138, 106, 66, 0.4);
+  background: var(--secondary-gradient);
+  border-color: rgba(217, 119, 6, 0.5);
+}
+
+/* Ayurvedic Navigation Effects */
+.nav-3d {
+  background: rgba(240, 253, 244, 0.8);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-bottom: 1px solid rgba(34, 197, 94, 0.2);
+  box-shadow: 0 8px 32px rgba(21, 128, 61, 0.1);
+  transition: all 0.3s ease;
+}
+
+.nav-3d.scrolled {
+  background: rgba(240, 253, 244, 0.95);
+  box-shadow: 0 8px 32px rgba(21, 128, 61, 0.2);
+}
+
+.nav-item {
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: none;
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: var(--primary-gradient);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.nav-item:hover::after {
+  width: 100%;
+}
+
+.nav-item:hover {
+  transform: translateY(-2px);
+  color: #16a34a !important;
+}
+
+/* Ayurvedic Logo Animation */
+.logo-ayurveda {
+  position: relative;
+  font-size: 2rem;
+  font-weight: 800;
+  background: var(--nature-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  cursor: none;
+}
+
+.logo-ayurveda::before {
+  content: '🌿';
+  position: absolute;
+  left: -2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Ayurvedic Hero Section */
+.hero-3d {
+  position: relative;
+  background: var(--nature-gradient);
+  overflow: hidden;
+}
+
+.hero-3d::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="leaves" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M25,10 Q35,20 25,30 Q15,20 25,10" fill="rgba(34,197,94,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23leaves)"/></svg>');
+  opacity: 0.4;
+}
+
+/* Nature Animations */
+@keyframes leafFall {
+  0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.leaf-animation {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: rgba(34, 197, 94, 0.6);
+  border-radius: 0 100% 0 100%;
+  animation: leafFall 8s linear infinite;
+}
+
+.breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+/* Product Card 3D */
+.product-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.product-card:hover {
+  transform: translateY(-20px) scale(1.02);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+  transition: all 0.4s ease;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.1);
+}
+
+/* Category Card 3D */
+.category-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--primary-gradient);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.category-card:hover::before {
+  opacity: 0.1;
+}
+
+.category-card:hover {
+  transform: translateY(-10px) rotateX(10deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Testimonial Card 3D */
+.testimonial-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer 3D */
+.footer-3d {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  position: relative;
+}
+
+.footer-3d::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+}
+
+/* Scroll Animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideInUp 0.6s ease-out;
+}
+
+/* Parallax Effect */
+.parallax {
+  transform-style: preserve-3d;
+}
+
+/* Shopping Cart 3D */
+.cart-modal {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 24px;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile Responsive 3D */
+@media (max-width: 768px) {
+  .card-3d:hover {
+    transform: translateY(-10px);
+  }
+  
+  .product-card:hover {
+    transform: translateY(-10px) scale(1.01);
+  }
+}
+
+/* Loading Animation */
+@keyframes pulse3d {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+.pulse-3d {
+  animation: pulse3d 2s ease-in-out infinite;
+}
+
+/* Gradient Borders */
+.gradient-border {
+  position: relative;
+  background: linear-gradient(white, white) padding-box,
+              var(--primary-gradient) border-box;
+  border: 2px solid transparent;
+  border-radius: 20px;
+}
+
+/* Text Shadow 3D */
+.text-shadow-3d {
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3),
+               0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon 3D Effects */
+.icon-3d {
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.icon-3d:hover {
+  transform: translateY(-3px) scale(1.1);
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+}

@@ -19,7 +19,7 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 // Admin Authentication Routes
 Route::prefix('admin')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('admin.login');
-    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/login', [AuthController::class, 'login'])->name('admin.login.post');
     Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
     
     // Protected Admin Routes
@@ -37,13 +37,19 @@ Route::prefix('admin')->group(function () {
             'update' => 'admin.products.update',
             'destroy' => 'admin.products.destroy',
         ]);
-        Route::get('/products-availability', [ProductController::class, 'checkAvailability'])->name('admin.products.availability');
+        Route::get('/products-availability', [AdminController::class, 'stockCheck'])->name('admin.products.availability');
+        Route::post('/products/{product}/update-stock', [ProductController::class, 'updateStock'])->name('admin.products.update-stock');
+        Route::post('/products/{product}/add-stock', [ProductController::class, 'addStock'])->name('admin.products.add-stock');
+        Route::post('/products/{product}/remove-image', [ProductController::class, 'removeImage'])->name('admin.products.remove-image');
         
         // Order Management
         Route::get('/orders', [OrderController::class, 'index'])->name('admin.orders.index');
         Route::get('/orders/{order}', [OrderController::class, 'show'])->name('admin.orders.show');
         Route::patch('/orders/{order}/status', [OrderController::class, 'updateStatus'])->name('admin.orders.update-status');
         Route::get('/preorders', [OrderController::class, 'preorders'])->name('admin.orders.preorders');
+        Route::post('/preorders/{order}/notify', [OrderController::class, 'notifyPreorder'])->name('admin.preorders.notify');
+        Route::post('/preorders/{order}/cancel', [OrderController::class, 'cancelPreorder'])->name('admin.preorders.cancel');
+        Route::post('/preorders/{order}/convert', [OrderController::class, 'convertPreorder'])->name('admin.preorders.convert');
         
         // Testimonial Management
         Route::resource('testimonials', TestimonialController::class)->names([
