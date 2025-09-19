@@ -78,6 +78,8 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product)
     {
+        
+        // dd($request->all());
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
@@ -86,7 +88,7 @@ class ProductController extends Controller
             'quantity' => 'required|integer|min:0',
             'category_id' => 'required|exists:categories,id',
             'main_category' => 'required|string|max:255',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'allow_preorder' => 'boolean'
         ]);
 
