@@ -2,27 +2,39 @@
 deployment:
   tasks:
     - export DEPLOY_PATH=$HOME/repos/blizz
-    - echo "Deploying to $DEPLOY_PATH"
+    - echo "Deploying Blizz Ayurveda to $DEPLOY_PATH"
+
+    # Set proper permissions for Laravel directories
+    - chmod -R 755 $DEPLOY_PATH/storage || true
+    - chmod -R 755 $DEPLOY_PATH/bootstrap/cache || true
 
     # composer (uses cPanel's composer if enabled)
     - if command -v composer >/dev/null 2>&1; then cd $DEPLOY_PATH && composer install --no-dev --optimize-autoloader --prefer-dist; fi
 
-    # ensure .env exists (create from example if missing)
-    - if [ ! -f "$DEPLOY_PATH/.env" ]; then cp "$DEPLOY_PATH/.env.example" "$DEPLOY_PATH/.env"; fi
+    # ensure .env exists (create from production example if missing)
+    - if [ ! -f "$DEPLOY_PATH/.env" ]; then cp "$DEPLOY_PATH/.env.example.production" "$DEPLOY_PATH/.env"; fi
 
     # app key (idempotent)
     - php $DEPLOY_PATH/artisan key:generate --force || true
 
-    # storage link (idempotent)
+    # storage link (idempotent) - for subdomain setup
     - php $DEPLOY_PATH/artisan storage:link || true
 
     # clear & warm caches
     - php $DEPLOY_PATH/artisan config:clear || true
     - php $DEPLOY_PATH/artisan route:clear || true
     - php $DEPLOY_PATH/artisan view:clear || true
+    - php $DEPLOY_PATH/artisan cache:clear || true
     - php $DEPLOY_PATH/artisan config:cache || true
     - php $DEPLOY_PATH/artisan route:cache || true
     - php $DEPLOY_PATH/artisan view:cache || true
 
     # run migrations (safe to re-run)
     - php $DEPLOY_PATH/artisan migrate --force || true
+
+    # optimize for production
+    - php $DEPLOY_PATH/artisan optimize || true
+
+    # Set final permissions
+    - chmod -R 755 $DEPLOY_PATH/storage || true
+    - chmod -R 755 $DEPLOY_PATH/bootstrap/cache || true
