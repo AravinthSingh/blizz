@@ -3,78 +3,21 @@
 @section('title', 'Home')
 
 @section('content')
-<!-- Ayurvedic Hero Section -->
-<section class="hero-3d relative h-screen overflow-hidden flex items-center justify-center">
-    <!-- Nature Background -->
-    <div class="absolute inset-0 bg-gradient-to-br from-primary-900 via-earth-800 to-secondary-900"></div>
-    <div class="absolute inset-0 bg-gradient-to-tr from-primary-600/40 to-secondary-600/30"></div>
-    
-    <!-- Floating Natural Elements -->
-    <div class="absolute top-20 left-20 w-32 h-32 bg-primary-400/20 rounded-full blur-xl float" style="animation-delay: -1s;"></div>
-    <div class="absolute top-40 right-32 w-24 h-24 bg-secondary-400/20 rounded-full blur-lg float" style="animation-delay: -3s;"></div>
-    <div class="absolute bottom-32 left-1/4 w-20 h-20 bg-earth-400/20 rounded-full blur-lg float" style="animation-delay: -2s;"></div>
-    <div class="absolute bottom-20 right-20 w-28 h-28 bg-primary-300/20 rounded-full blur-xl float" style="animation-delay: -4s;"></div>
-    
-    <!-- Main Content -->
-    <div class="relative z-10 text-center text-white px-4 max-w-6xl mx-auto">
-        <div class="glass p-12 rounded-3xl breathe" data-aos="fade-up" data-aos-duration="1000">
-            <h1 class="text-6xl md:text-8xl font-bold mb-8 gradient-text text-shadow-3d">
-                🌿 Natural Radiance
-            </h1>
-            <p class="text-2xl md:text-3xl mb-12 max-w-4xl mx-auto leading-relaxed text-shadow-3d">
-                Embrace the ancient wisdom of <span class="gradient-text font-bold">Ayurveda</span> for naturally glowing, healthy skin with our premium herbal face creams
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <a href="{{ route('products') }}" class="btn-3d text-lg px-12 py-4">
-                    <i class="fas fa-spa mr-3"></i>Explore Products
-                </a>
-                <button class="btn-ayurveda px-8 py-4 text-lg">
-                    <i class="fas fa-leaf mr-3"></i>Learn Ayurveda
-                </button>
-            </div>
-        </div>
-        
-        <!-- Ayurvedic Stats -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16" data-aos="fade-up" data-aos-delay="200">
-            <div class="glass p-8 rounded-2xl text-center breathe">
-                <div class="text-5xl mb-4">🌱</div>
-                <div class="text-4xl font-bold gradient-text mb-2">5000+</div>
-                <div class="text-white/90 font-semibold">Years of Ayurvedic Wisdom</div>
-            </div>
-            <div class="glass p-8 rounded-2xl text-center breathe" style="animation-delay: -1s;">
-                <div class="text-5xl mb-4">🧘‍♀️</div>
-                <div class="text-4xl font-bold gradient-text mb-2">100%</div>
-                <div class="text-white/90 font-semibold">Natural Ingredients</div>
-            </div>
-            <div class="glass p-8 rounded-2xl text-center breathe" style="animation-delay: -2s;">
-                <div class="text-5xl mb-4">✨</div>
-                <div class="text-4xl font-bold gradient-text mb-2">10K+</div>
-                <div class="text-white/90 font-semibold">Satisfied Customers</div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
-        <div class="flex flex-col items-center">
-            <span class="text-sm mb-2 opacity-80">Discover More</span>
-            <i class="fas fa-chevron-down text-2xl opacity-70"></i>
-        </div>
-    </div>
-</section>
+<!-- New Unified Hero Component with Carousel -->
+@include('components.hero-new')
 
 <!-- Featured Products -->
 <section class="py-20 relative overflow-hidden">
-    <!-- Background -->
-    <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-blue-50"></div>
+    <!-- Premium Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-secondary-50"></div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-5xl md:text-6xl font-bold gradient-text mb-6 text-shadow-3d">
-                ✨ Featured Products
+            <h2 class="text-5xl md:text-6xl font-bold mb-6">
+                <span class="text-gradient-gold">✨ Premium</span>
+                <span class="text-primary-900">Collection</span>
             </h2>
-            <p class="text-2xl text-gray-600 max-w-3xl mx-auto">Discover our best-selling face creams crafted with premium ingredients</p>
+            <p class="text-2xl text-primary-700 max-w-3xl mx-auto">Discover our luxury Ayurvedic face creams crafted with pure gold essence</p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">

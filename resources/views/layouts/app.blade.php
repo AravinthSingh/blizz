@@ -22,37 +22,38 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20">
                 <div class="flex items-center">
-                    <a href="{{ route('home') }}" class="logo-ayurveda breathe">
-                        Blizz Ayurveda
+                    <a href="{{ route('home') }}" class="text-3xl font-bold">
+                        <span class="text-gradient-gold">🌿 Blizz</span>
+                        <span class="text-primary-900">Premium</span>
                     </a>
                 </div>
                 
                 <div class="hidden md:flex items-center space-x-2">
-                    <a href="{{ route('home') }}" class="nav-item text-earth-700 hover:text-primary-600 font-semibold px-6 py-3 rounded-full transition-all duration-300 {{ request()->routeIs('home') ? 'text-primary-600 bg-primary-50 shadow-lg' : '' }}">
-                        <i class="fas fa-leaf mr-2 icon-3d"></i>Home
+                    <a href="{{ route('home') }}" class="nav-item text-primary-700 hover:text-secondary-600 font-semibold px-6 py-3 rounded-full transition-all duration-300 {{ request()->routeIs('home') ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700 shadow-lg' : '' }}">
+                        <i class="fas fa-leaf mr-2"></i>Home
                     </a>
-                    <a href="{{ route('about') }}" class="nav-item text-earth-700 hover:text-primary-600 font-semibold px-6 py-3 rounded-full transition-all duration-300 {{ request()->routeIs('about') ? 'text-primary-600 bg-primary-50 shadow-lg' : '' }}">
-                        <i class="fas fa-seedling mr-2 icon-3d"></i>About
+                    <a href="{{ route('about') }}" class="nav-item text-primary-700 hover:text-secondary-600 font-semibold px-6 py-3 rounded-full transition-all duration-300 {{ request()->routeIs('about') ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700 shadow-lg' : '' }}">
+                        <i class="fas fa-seedling mr-2"></i>About
                     </a>
-                    <a href="{{ route('products') }}" class="nav-item text-earth-700 hover:text-primary-600 font-semibold px-6 py-3 rounded-full transition-all duration-300 {{ request()->routeIs('products*') ? 'text-primary-600 bg-primary-50 shadow-lg' : '' }}">
-                        <i class="fas fa-spa mr-2 icon-3d"></i>Products
+                    <a href="{{ route('products') }}" class="nav-item text-primary-700 hover:text-secondary-600 font-semibold px-6 py-3 rounded-full transition-all duration-300 {{ request()->routeIs('products*') ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700 shadow-lg' : '' }}">
+                        <i class="fas fa-spa mr-2"></i>Products
                     </a>
-                    <a href="{{ route('contact') }}" class="nav-item text-earth-700 hover:text-primary-600 font-semibold px-6 py-3 rounded-full transition-all duration-300 {{ request()->routeIs('contact') ? 'text-primary-600 bg-primary-50 shadow-lg' : '' }}">
-                        <i class="fas fa-lotus mr-2 icon-3d"></i>Contact
+                    <a href="{{ route('contact') }}" class="nav-item text-primary-700 hover:text-secondary-600 font-semibold px-6 py-3 rounded-full transition-all duration-300 {{ request()->routeIs('contact') ? 'text-white bg-gradient-to-r from-primary-600 to-primary-700 shadow-lg' : '' }}">
+                        <i class="fas fa-lotus mr-2"></i>Contact
                     </a>
                 </div>
 
                 <div class="flex items-center space-x-4">
                     <!-- Search Button -->
-                    <button class="glass p-3 rounded-full hover:scale-110 transition-all duration-300 group">
-                        <i class="fas fa-search text-lg text-primary-600 icon-3d"></i>
-                        <div class="absolute inset-0 bg-primary-100 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                    <button class="glass-gold p-3 rounded-full hover:scale-110 transition-all duration-300 group">
+                        <i class="fas fa-search text-lg text-primary-700"></i>
+                        <div class="absolute inset-0 bg-secondary-100 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                     </button>
                     
                     <!-- Cart Button -->
-                    <button id="cart-btn" class="relative glass p-3 rounded-full hover:scale-110 transition-all duration-300 group">
-                        <i class="fas fa-shopping-basket text-lg text-secondary-600 icon-3d"></i>
-                        <span id="cart-count" class="absolute -top-2 -right-2 bg-gradient-to-r from-secondary-500 to-secondary-600 text-white text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold shadow-lg pulse-3d">0</span>
+                    <button id="cart-btn" class="relative glass-gold p-3 rounded-full hover:scale-110 transition-all duration-300 group">
+                        <i class="fas fa-shopping-basket text-lg text-secondary-700"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-gradient-to-r from-secondary-600 to-secondary-700 text-primary-900 text-xs rounded-full h-6 w-6 flex items-center justify-center font-bold shadow-lg">0</span>
                         <div class="absolute inset-0 bg-secondary-100 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                     </button>
                     
@@ -312,9 +313,14 @@
             }
         });
 
-        // Enhanced Navbar scroll effect with Ayurvedic theme
+        // Enhanced Navbar scroll effect - Transparent to solid
+        const nav = document.getElementById('main-nav');
+        // Set initial transparent state
+        nav.style.background = 'transparent';
+        nav.style.backdropFilter = 'none';
+        nav.style.boxShadow = 'none';
+        
         window.addEventListener('scroll', function() {
-            const nav = document.getElementById('main-nav');
             if (window.scrollY > 50) {
                 nav.classList.add('scrolled');
                 nav.style.background = 'rgba(240, 253, 244, 0.98)';
@@ -322,9 +328,9 @@
                 nav.style.boxShadow = '0 8px 32px rgba(21, 128, 61, 0.2)';
             } else {
                 nav.classList.remove('scrolled');
-                nav.style.background = 'rgba(240, 253, 244, 0.8)';
-                nav.style.backdropFilter = 'blur(25px)';
-                nav.style.boxShadow = '0 8px 32px rgba(21, 128, 61, 0.1)';
+                nav.style.background = 'transparent';
+                nav.style.backdropFilter = 'none';
+                nav.style.boxShadow = 'none';
             }
         });
         
@@ -336,6 +342,90 @@
                 const speed = 0.5 + (index * 0.1);
                 element.style.transform = `translateY(${scrolled * speed}px)`;
             });
+        });
+        
+        // Carousel Functionality with Auto-play
+        document.addEventListener('DOMContentLoaded', function() {
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            const heroSection = document.getElementById('hero-section');
+            const productTitle = document.getElementById('product-title');
+            const productDescription = document.getElementById('product-description');
+            const heroImage = document.getElementById('hero-image');
+            const bgText = document.getElementById('bg-text');
+            const orderButton = document.getElementById('order-button');
+            
+            let currentIndex = 0;
+            let autoPlayInterval;
+            
+            function changeProduct(item) {
+                // Get data attributes
+                const title = item.dataset.title;
+                const description = item.dataset.description;
+                const price = item.dataset.price;
+                const bgColor = item.dataset.bgColor;
+                const modalText = item.dataset.modalText;
+                const image = item.dataset.image;
+                
+                // Update active states
+                document.querySelectorAll('.product-thumb').forEach(thumb => {
+                    thumb.classList.remove('opacity-100', 'scale-110');
+                    thumb.classList.add('opacity-50');
+                });
+                
+                item.querySelector('.product-thumb').classList.remove('opacity-50');
+                item.querySelector('.product-thumb').classList.add('opacity-100', 'scale-110');
+                
+                // Animate changes
+                productTitle.style.animation = 'none';
+                productDescription.style.animation = 'none';
+                heroImage.style.animation = 'none';
+                
+                setTimeout(() => {
+                    // Update content
+                    productTitle.textContent = title;
+                    productDescription.textContent = description;
+                    heroImage.src = image;
+                    bgText.textContent = modalText;
+                    orderButton.style.color = bgColor;
+                    
+                    // Update background color
+                    heroSection.style.backgroundColor = bgColor;
+                    heroSection.dataset.activeBg = bgColor;
+                    
+                    // Re-trigger animations
+                    productTitle.style.animation = 'slideRight 0.5s ease-out';
+                    productDescription.style.animation = 'slideRight 0.5s ease-out 0.2s';
+                    heroImage.style.animation = 'slideLeft 0.5s ease-out';
+                }, 100);
+            }
+            
+            // Click handlers for carousel items
+            carouselItems.forEach((item, index) => {
+                item.addEventListener('click', function() {
+                    currentIndex = index;
+                    changeProduct(this);
+                    // Reset auto-play interval
+                    clearInterval(autoPlayInterval);
+                    startAutoPlay();
+                });
+            });
+            
+            // Auto-play functionality
+            function autoPlay() {
+                currentIndex = (currentIndex + 1) % carouselItems.length;
+                changeProduct(carouselItems[currentIndex]);
+            }
+            
+            function startAutoPlay() {
+                autoPlayInterval = setInterval(autoPlay, 5000); // Change every 5 seconds
+            }
+            
+            // Start auto-play
+            startAutoPlay();
+            
+            // Pause auto-play on hover
+            heroSection.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+            heroSection.addEventListener('mouseleave', () => startAutoPlay());
         });
     </script>
 </body>
