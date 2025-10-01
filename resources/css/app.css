@@ -5,16 +5,19 @@
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
-/* Ayurvedic Theme - Custom Styles and Animations */
+/* Premium Green & Gold Theme - Custom Styles and Animations */
 :root {
-  --primary-gradient: linear-gradient(135deg, #046d2bf2 0%, #31b361 100%);
-  --secondary-gradient: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
-  --earth-gradient: linear-gradient(135deg, #8a6a42 0%, #b8935a 100%);
-  --nature-gradient: linear-gradient(135deg, #052e16 0%, #15803d 50%, #d97706 100%);
-  --glass-bg: rgba(94, 63, 22, 0.1);
-  --glass-border: rgba(34, 197, 94, 0.2);
-  --shadow-natural: 0 20px 40px rgba(21, 128, 61, 0.15), 0 10px 20px rgba(21, 128, 61, 0.1);
-  --shadow-natural-hover: 0 30px 60px rgba(21, 128, 61, 0.25), 0 15px 30px rgba(21, 128, 61, 0.15);
+  --primary-gradient: linear-gradient(135deg, #68875A 0%, #304F27 100%);
+  --secondary-gradient: linear-gradient(135deg, #F8C42E 0%, #E3B43C 100%);
+  --premium-green: #68875A;
+  --dark-green: #304F27;
+  --bright-gold: #F8C42E;
+  --main-gold: #E3B43C;
+  --glass-bg: rgba(104, 135, 90, 0.1);
+  --glass-border: rgba(227, 180, 60, 0.2);
+  --glass-gold: linear-gradient(135deg, rgba(248, 196, 46, 0.1) 0%, rgba(227, 180, 60, 0.15) 100%);
+  --shadow-premium: 0 20px 40px rgba(104, 135, 90, 0.15), 0 10px 20px rgba(227, 180, 60, 0.1);
+  --shadow-premium-hover: 0 30px 60px rgba(104, 135, 90, 0.25), 0 15px 30px rgba(227, 180, 60, 0.15);
 }
 
 /* Global 3D Effects */
@@ -23,13 +26,13 @@
 }
 
 body {
-  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  background: linear-gradient(135deg, #f4f7f2 0%, #e8efe4 100%);
   overflow-x: hidden;
   cursor: none;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Custom Cursor */
+/* Premium Custom Cursor */
 .custom-cursor {
   position: fixed;
   width: 20px;
@@ -39,21 +42,21 @@ body {
   pointer-events: none;
   z-index: 9999;
   transition: transform 0.1s ease;
-  box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+  box-shadow: 0 0 20px rgba(104, 135, 90, 0.5);
 }
 
 .custom-cursor.hover {
   transform: scale(1.5);
   background: var(--secondary-gradient);
-  box-shadow: 0 0 30px rgba(217, 119, 6, 0.7);
+  box-shadow: 0 0 30px rgba(227, 180, 60, 0.7);
 }
 
-/* Cursor Trail */
+/* Premium Cursor Trail */
 .cursor-trail {
   position: fixed;
   width: 6px;
   height: 6px;
-  background: rgba(34, 197, 94, 0.6);
+  background: rgba(104, 135, 90, 0.6);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;
@@ -71,24 +74,32 @@ body {
   transition: transform 0.2s ease;
 }
 
-/* Ayurvedic Glassmorphism Effect */
+/* Premium Glassmorphism Effect */
 .glass {
   background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
   border: 1px solid var(--glass-border);
-  box-shadow: var(--shadow-natural);
+  box-shadow: var(--shadow-premium);
 }
 
-/* Natural 3D Card Effects */
+.glass-gold {
+  background: var(--glass-gold);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(227, 180, 60, 0.3);
+  box-shadow: 0 20px 40px rgba(227, 180, 60, 0.15), 0 10px 20px rgba(248, 196, 46, 0.1);
+}
+
+/* Premium 3D Card Effects */
 .card-3d {
   transform-style: preserve-3d;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: var(--shadow-natural);
+  box-shadow: var(--shadow-premium);
   border-radius: 20px;
   overflow: hidden;
   position: relative;
-  background: linear-gradient(135deg, rgba(240, 253, 244, 0.9) 0%, rgba(220, 252, 231, 0.8) 100%);
+  background: linear-gradient(135deg, rgba(244, 247, 242, 0.9) 0%, rgba(232, 239, 228, 0.8) 100%);
 }
 
 .card-3d::before {
@@ -118,20 +129,19 @@ body {
   animation: float 6s ease-in-out infinite;
 }
 
-/* Ayurvedic Gradient Text */
+/* Premium Gradient Text */
 .gradient-text {
-  background: var(--nature-gradient);
+  background: linear-gradient(135deg, #68875A 0%, #F8C42E 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-weight: 700;
 }
 
-/* Natural 3D Button */
+/* Premium 3D Buttons */
 .btn-3d {
   position: relative;
+  display: inline-block;
   background: var(--primary-gradient);
-  border: none;
   border-radius: 50px;
   padding: 15px 30px;
   color: white;
@@ -139,7 +149,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 20px rgba(22, 163, 74, 0.3);
+  box-shadow: 0 10px 20px rgba(104, 135, 90, 0.3);
   overflow: hidden;
   cursor: none;
 }
@@ -161,50 +171,50 @@ body {
 
 .btn-3d:hover {
   transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(22, 163, 74, 0.4);
+  box-shadow: 0 15px 30px rgba(227, 180, 60, 0.4);
   background: var(--secondary-gradient);
 }
 
 .btn-3d:active {
   transform: translateY(-1px);
-  box-shadow: 0 5px 10px rgba(22, 163, 74, 0.3);
+  box-shadow: 0 5px 10px rgba(104, 135, 90, 0.3);
 }
 
-/* Ayurvedic Button Variant */
-.btn-ayurveda {
+/* Premium Button Variant */
+.btn-premium {
   position: relative;
-  background: var(--earth-gradient);
-  border: 2px solid rgba(184, 147, 90, 0.3);
+  background: var(--secondary-gradient);
+  border: 2px solid rgba(227, 180, 60, 0.3);
   border-radius: 50px;
   padding: 15px 30px;
-  color: white;
+  color: var(--dark-green);
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 20px rgba(138, 106, 66, 0.3);
+  box-shadow: 0 10px 20px rgba(227, 180, 60, 0.3);
   overflow: hidden;
   cursor: none;
 }
 
-.btn-ayurveda:hover {
+.btn-premium:hover {
   transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(138, 106, 66, 0.4);
-  background: var(--secondary-gradient);
-  border-color: rgba(217, 119, 6, 0.5);
+  box-shadow: 0 15px 30px rgba(248, 196, 46, 0.4);
+  background: linear-gradient(135deg, #F8C42E 0%, #ffffff 100%);
+  border-color: rgba(248, 196, 46, 0.5);
 }
 
-/* Ayurvedic Navigation Effects */
+/* Premium Navigation Effects */
 .nav-3d {
-  background: rgba(240, 253, 244, 0.8);
+  background: rgba(244, 247, 242, 0.8);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
-  border-bottom: 1px solid rgba(34, 197, 94, 0.2);
-  box-shadow: 0 8px 32px rgba(21, 128, 61, 0.1);
+  border-bottom: 1px solid rgba(104, 135, 90, 0.2);
+  box-shadow: 0 8px 32px rgba(104, 135, 90, 0.1);
   transition: all 0.3s ease;
 }
 
 .nav-3d.scrolled {
-  background: rgba(240, 253, 244, 0.95);
-  box-shadow: 0 8px 32px rgba(21, 128, 61, 0.2);
+  background: rgba(244, 247, 242, 0.95);
+  box-shadow: 0 8px 32px rgba(227, 180, 60, 0.2);
 }
 
 .nav-item {
@@ -232,7 +242,7 @@ body {
 
 .nav-item:hover {
   transform: translateY(-2px);
-  color: #16a34a !important;
+  color: #68875A !important;
 }
 
 /* Ayurvedic Logo Animation */
@@ -484,4 +494,87 @@ body {
 .icon-3d:hover {
   transform: translateY(-3px) scale(1.1);
   filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+}
+
+/* Fanta Hero Component Animations */
+@layer components {
+    /* Text Shadow */
+    .text-shadow {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Image Shadow */
+    .img-shadow {
+        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+    }
+    
+    /* Animations */
+    @keyframes slideRight {
+        from {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    @keyframes slideLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-100px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    
+    .animate-slide-right {
+        animation: slideRight 0.5s ease-out;
+    }
+    
+    .animate-slide-left {
+        animation: slideLeft 0.5s ease-out;
+    }
+    
+    .animate-fade-in {
+        animation: fadeIn 1s ease-out;
+    }
+    
+    /* Animation Delays */
+    .animation-delay-200 {
+        animation-delay: 0.2s;
+        animation-fill-mode: both;
+    }
+    
+    .animation-delay-400 {
+        animation-delay: 0.4s;
+        animation-fill-mode: both;
+    }
+    
+    .animation-delay-600 {
+        animation-delay: 0.6s;
+        animation-fill-mode: both;
+    }
+    
+    .animation-delay-800 {
+        animation-delay: 0.8s;
+        animation-fill-mode: both;
+    }
+    
+    /* Brand Colors */
+    .bg-brandDark {
+        background-color: #0f0f0f;
+    }
 }
