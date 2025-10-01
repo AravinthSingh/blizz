@@ -4,14 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Home') - Blizz Face Cream</title>
-    @if(config('app.env') === 'production')
-        <!-- Production: Direct asset links -->
-        <link rel="stylesheet" href="{{ asset('build/assets/app-CotBYrHi.css') }}">
-        <script src="{{ asset('build/assets/app-l0sNRNKZ.js') }}" defer></script>
-    @else
-        <!-- Development: Vite assets -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @endif
+    <!-- Use Vite in all environments; in production it reads manifest.json -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->

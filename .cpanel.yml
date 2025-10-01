@@ -1,0 +1,35 @@
+---
+# cPanel Git Deployment Configuration
+# This runs on the server when you deploy via cPanel's Git Version Control feature
+# Target structure: /home/<user>/public_html/blizz/ (Laravel root)
+# Domain document root should be: /home/<user>/public_html/blizz/public
+
+deployment:
+  tasks:
+    - export DEPLOYPATH=$HOME/public_html/blizz
+
+    # Ensure correct directory
+    - /bin/echo "Deploying to $DEPLOYPATH"
+
+    # Install PHP dependencies (optimize, no dev)
+    - /usr/local/bin/composer install --no-dev --optimize-autoloader --no-interaction --working-dir=$DEPLOYPATH
+
+    # Create .env if not present (you must upload it once or create manually)
+    - if [ ! -f $DEPLOYPATH/.env ]; then /bin/cp $DEPLOYPATH/.env.production.example $DEPLOYPATH/.env; fi
+
+    # Laravel optimizations
+    - /bin/bash -lc "php -d detect_unicode=0 $DEPLOYPATH/artisan key:generate --force || true"
+    - /bin/bash -lc "php $DEPLOYPATH/artisan storage:link || true"
+    - /bin/bash -lc "php $DEPLOYPATH/artisan migrate --force || true"
+    - /bin/bash -lc "php $DEPLOYPATH/artisan config:clear || true"
+    - /bin/bash -lc "php $DEPLOYPATH/artisan config:cache || true"
+    - /bin/bash -lc "php $DEPLOYPATH/artisan route:cache || true"
+    - /bin/bash -lc "php $DEPLOYPATH/artisan view:cache || true"
+
+    # Ensure correct permissions (adjust group to your server setup)
+    - /bin/find $DEPLOYPATH/storage -type d -exec chmod 755 {} \;
+    - /bin/find $DEPLOYPATH/bootstrap/cache -type d -exec chmod 755 {} \;
+
+    # Note: Build frontend assets locally (GitHub Actions) and upload public/build
+    # If you prefer building on server, ensure Node is installed and uncomment below:
+    # - /bin/bash -lc "cd $DEPLOYPATH && npm ci && npm run build"
